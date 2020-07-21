@@ -1,10 +1,13 @@
 require('dotenv').config()
 
 const queue = require("./src/utils/queue")
+const Monitoring = require('./src/scheduler/scheduler-model')
 
-const data = {
+queue.sendToQueue("RESTAR_SCHEDULER_EVENT", null)
+
+new Monitoring({
     url: 'https://horriblesubs.info/',
-    // scriptTarget: "$('.latest-releases li').first().find('a').children().not('strong').remove().end().end().text().trim()",
+    scriptTarget: "$('.latest-releases li').first().find('a').children().not('strong').remove().end().end().text().trim()",
     scriptContent: [
         "$('.latest-releases li').first().find('a').children().not('strong').remove().end().end().text().trim()",
         "$($('.latest-releases li')[1]).find('a').children().not('strong').remove().end().end().text()",
@@ -15,32 +18,5 @@ const data = {
     ],
     options: {        
         useJquery: true
-    },
-    // filter: {
-    //     words: [
-    //         'Boruto',            
-    //     ]
-    // },
-}
-
-
-// setInterval(() => {
-    queue.sendToQueue("EXECUTION_INCOMING", data)
-    // queue.sendToQueue("EXECUTION_INCOMING", data)
-    // queue.sendToQueue("EXECUTION_INCOMING", data)
-    // queue.sendToQueue("EXECUTION_INCOMING", data)
-    // queue.sendToQueue("EXECUTION_INCOMING", data)
-    // queue.sendToQueue("EXECUTION_INCOMING", data)
-    // queue.sendToQueue("EXECUTION_INCOMING", data)
-    // queue.sendToQueue("EXECUTION_INCOMING", data)
-    // queue.sendToQueue("EXECUTION_INCOMING", data)
-    // queue.sendToQueue("EXECUTION_INCOMING", data)
-    // queue.sendToQueue("EXECUTION_INCOMING", data)
-    // queue.sendToQueue("EXECUTION_INCOMING", data)
-    // queue.sendToQueue("EXECUTION_INCOMING", data)
-    // queue.sendToQueue("EXECUTION_INCOMING", data)
-    // queue.sendToQueue("EXECUTION_INCOMING", data)
-    // queue.sendToQueue("EXECUTION_INCOMING", data)
-    // queue.sendToQueue("EXECUTION_INCOMING", data)
-// }, 10000)
-
+    }
+}).save()

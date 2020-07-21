@@ -1,18 +1,18 @@
 require('dotenv').config()
 
 const databaseInit = require('./config/database')
-const browserInit = require('./config/puppeteer')
-const consumerInit = require('./execution/execution-consumer')
+const consumerInit = require('./scheduler/scheduler-consumer')
+const { startSchedulers } = require('./scheduler/scheduler-service')
 const healthcheck = require('./config/healthcheck')
 
 const cors = require('cors')
 const express = require('express')
 const app = express()
 
-browserInit()
 databaseInit()
+consumerInit()
+startSchedulers()
 
-setTimeout(consumerInit, 2000)
 
 app.use(cors())
 app.use(express.json())
