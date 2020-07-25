@@ -16,7 +16,7 @@ const findByRegularity = (regularity) => Scheduler.find({regularity})
 
 const postNewExecution = async (monitoring) => {
     console.log('Adding new execution on queue')
-    producer.postExecution(monitoring)
+    producer.postExecution({...monitoring, monitoringId: monitoring._id})
     console.log('New execution posted', `[${monitoring.regularity}]`, monitoring._id, monitoring.url)
 }
 
