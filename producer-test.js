@@ -5,7 +5,10 @@ const Monitoring = require('./src/scheduler/scheduler-model')
 
 queue.sendToQueue("RESTAR_SCHEDULER_EVENT", null)
 
-new Monitoring({
+const data = []
+
+
+data.push({
     url: 'https://horriblesubs.info/',
     scriptTarget: "$('.latest-releases li').first().find('a').children().not('strong').remove().end().end().text().trim()",
     scriptContent: [
@@ -13,10 +16,12 @@ new Monitoring({
         "$($('.latest-releases li')[1]).find('a').children().not('strong').remove().end().end().text()",
         "$($('.latest-releases li')[2]).find('a').children().not('strong').remove().end().end().text()",
         "$($('.latest-releases li')[3]).find('a').children().not('strong').remove().end().end().text()",
-        "$($('.latest-releases li')[4]).find('a').children().not('strong').remove().end().end().text()",
-        "document.querySelector('a').href"
+        "$($('.latest-releases li')[4]).find('a').children().not('strong').remove().end().end().text()"
     ],
+    regularity: '*/1 * * * *',
     options: {        
         useJquery: true
     }
-}).save()
+})
+
+Promise.all(data.map((v) => new Monitoring(v).save().then(() => console.log('salvo'))))
