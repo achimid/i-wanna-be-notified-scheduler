@@ -10,7 +10,7 @@ const findAllRegularity = () => Scheduler.find()
     .distinct('regularity')
     .lean()
 
-const findByRegularity = (regularity) => Scheduler.find({regularity})
+const findByRegularity = (regularity) => Scheduler.find({regularity, disabled: {$ne: true}})
     .sort('regularity')
     .lean()
 

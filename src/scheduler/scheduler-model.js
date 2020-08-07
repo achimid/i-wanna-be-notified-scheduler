@@ -15,6 +15,12 @@ const schema = mongoose.Schema({
         threshold: { Number },
         words: [{ type: String }]
     },
+    regularity: { 
+        type: String 
+    },
+    disabled: {
+        type: Boolean
+    },
     executionOptions: {
         timeout: { type: Number },
         waitUntil: { type: String },
@@ -24,9 +30,6 @@ const schema = mongoose.Schema({
         waitTime: { type: Number },
         printscreen: { type: Boolean },
         printscreenFullPage: { type: Boolean },
-    },
-    regularity: { 
-        type: String 
     },
 }, { versionKey: false, timestamps: true })
 
