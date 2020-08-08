@@ -26,6 +26,7 @@ const schema = mongoose.Schema({
         waitTime: { type: Number },
         printscreen: { type: Boolean },
         printscreenFullPage: { type: Boolean },
+        levelMax: { type: Number }
     },    
 }, { versionKey: false, timestamps: true })
 
