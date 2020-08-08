@@ -30,7 +30,8 @@ const schema = mongoose.Schema({
         waitTime: { type: Number },
         printscreen: { type: Boolean },
         printscreenFullPage: { type: Boolean },
-        levelMax: { type: Number }
+        levelMax: { type: Number },
+        proxy: { type: String }
     },
 }, { versionKey: false, timestamps: true })
 
