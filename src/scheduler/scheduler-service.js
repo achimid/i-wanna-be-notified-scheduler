@@ -44,6 +44,7 @@ const stopSchedulers = () => {
 }
 
 const restartSchedulers = async () => {
+    console.log('Restarting schedulers')
     stopSchedulers()
     startSchedulers()
 }
