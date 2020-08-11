@@ -10,13 +10,13 @@ const data = []
 
 data.push({
     url: 'https://horriblesubs.info/',
-    scriptTarget: "$('.latest-releases li').first().find('a').children().not('strong').remove().end().end().text().trim()",
+    scriptTarget: "target = []; async function click(){return Promise.resolve(Array.from(document.querySelectorAll('.episode-info-tabs')).forEach(e=>e.lastChild.click()))}async function getLink(){return Array.from(document.querySelectorAll('.episode-info-links')).forEach(e=>{const r=Array.from(e.childNodes).find(e=>'Drive ''===e.innerText);target.push(void 0!==r?r.href:'')}),Promise.resolve(target.toString)}target=[],click().then(getLink);",
     scriptContent: [
-        "$('.latest-releases li').first().find('a').children().not('strong').remove().end().end().text().trim()",
-        "$($('.latest-releases li')[1]).find('a').children().not('strong').remove().end().end().text()",
-        "$($('.latest-releases li')[2]).find('a').children().not('strong').remove().end().end().text()",
-        "$($('.latest-releases li')[3]).find('a').children().not('strong').remove().end().end().text()",
-        "$($('.latest-releases li')[4]).find('a').children().not('strong').remove().end().end().text()"
+        "target[0]",
+        "target[1]",
+        "target[2]",
+        "target[3]",
+        "target[4]"
     ],
     regularity: '*/1 * * * *',
     options: {        
