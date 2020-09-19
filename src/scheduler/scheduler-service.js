@@ -5,14 +5,16 @@ const producer = require('./scheduler-producer')
 const cronTimeDefault = process.env.CRON_TIME_DEFAULT
 let tasksList = new Set()
 
-const findAllRegularity = () => Scheduler.find()
+const findAllRegularity = () => Scheduler.many(Model => Model
+    .find()
     .select('regularity')
     .distinct('regularity')
-    .lean()
+    .lean())
 
-const findByRegularity = (regularity) => Scheduler.find({regularity, disabled: {$ne: true}})
+const findByRegularity = (regularity) => Scheduler.many(Model => Model
+    .find({regularity, disabled: {$ne: false}})
     .sort('regularity')
-    .lean()
+    .lean())
 
 const postNewExecution = async (monitoring) => {
     console.log('Adding new execution on queue')
