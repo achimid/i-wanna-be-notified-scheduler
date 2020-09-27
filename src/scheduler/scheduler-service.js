@@ -29,7 +29,8 @@ const executeScheduler = (regularity) => async () => {
 
 const startSchedulers = async () => {
     const regularities = await findAllRegularity()
-    regularities.map(regularity => {
+    const regularitiesDistinct = [...new Set(regularities)]
+    regularitiesDistinct.map(regularity => {
         const cronTime = regularity || cronTimeDefault
 
         console.log('Creating new scheduler', cronTime)
