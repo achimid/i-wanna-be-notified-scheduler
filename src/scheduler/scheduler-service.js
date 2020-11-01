@@ -12,7 +12,7 @@ const findAllRegularity = () => Scheduler.many(Model => Model
     .lean())
 
 const findByRegularity = (regularity) => Scheduler.many(Model => Model
-    .find({regularity, disabled: {$ne: false}})
+    .find({regularity, disabled: {$ne: true}})
     .sort('regularity')
     .lean())
 
