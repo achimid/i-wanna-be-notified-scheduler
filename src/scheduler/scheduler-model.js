@@ -9,9 +9,13 @@ const schema = mongoose.Schema({
     scriptTarget: {
         type: String
     },
-    scriptContent: [{
+    scriptNavigate: { 
         type: String
-    }],
+    },
+    scriptContent: {
+        type: [{ type: String }],
+        default: undefined    
+    },
     filter: {
         threshold: { Number },
         words: [{ type: String }]
@@ -21,6 +25,9 @@ const schema = mongoose.Schema({
     },
     disabled: {
         type: Boolean
+    },
+    mode: {
+        type: String
     },
     executionOptions: {
         timeout: { type: Number },
@@ -32,7 +39,8 @@ const schema = mongoose.Schema({
         printscreen: { type: Boolean },
         printscreenFullPage: { type: Boolean },
         levelMax: { type: Number },
-        proxy: { type: String }
+        proxy: { type: String },
+        filterDomain: { type: Boolean }
     },
 }, { versionKey: false, timestamps: true })
 
