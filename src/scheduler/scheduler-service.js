@@ -6,7 +6,7 @@ const cronTimeDefault = process.env.CRON_TIME_DEFAULT
 let tasksList = new Set()
 
 const findAllRegularity = () => Scheduler.many(Model => Model
-    .find()
+    .find({ disabled: {$ne: true} })
     .select('regularity')
     .distinct('regularity')
     .lean())
