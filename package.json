@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/achimid/i-wanna-be-notified-scheduler#readme",
   "dependencies": {
-    "amqplib": "^0.6.0",
+    "amqplib": "^0.8.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
