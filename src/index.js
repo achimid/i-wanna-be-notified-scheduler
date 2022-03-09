@@ -1,6 +1,5 @@
 require('dotenv').config()
 
-const consumerInit = require('./scheduler/scheduler-consumer')
 const { startSchedulers } = require('./scheduler/scheduler-service')
 const healthcheck = require('./config/healthcheck')
 const admin = require('./admin/admin-controller')
@@ -10,7 +9,6 @@ const express = require('express')
 const app = express()
 
 
-consumerInit()
 startSchedulers()
 
 
